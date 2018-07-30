@@ -79,7 +79,7 @@ var date1 = new Date("2016-06-20");
 
 var date2 = new Date ("2016-06-20");
 
-if(date2-date1==0){
+if(date2.getTime()==date1.getTime()){         //if (date1.valueOf()==date2.valueOf()){} (also fine)
 console.log("TWO DATES ARE EQUAL");  // executed 
 }
 else if(date1>date2){
@@ -106,7 +106,7 @@ console.log(Modifieddate3); //2018-03-14T00:00:00.000Z   (for 2 years)
 console.log(Modifieddate.toString()); //o/p: Thu Mar 17 2016 05:30:00 GMT+0530 (India Standard Time)
 
 
-console.log(MonthNames[Modifieddate.getMonth()] , Modifieddate.getFullYear(),Modifieddate.getDate()); //O/p: March 2016 17
+console.log(MonthNames[Modifieddate.getMonth()] , Modifieddate.getFullYear(),Modifieddate.getDate()); //O/P: March 2016 17
 
 
 

@@ -349,4 +349,14 @@ Array.isArray(undefined);  // false
      /* 1.An associative array is declared or dynamically created
         2.An associative array is also an object */
      var arr = { "one": 1, "two": 2, "three": 3 }; 
-    
+    //14.  removeDuplicatesArray
+var a=["a","b","a"];
+    function removeDuplicatesArray(a) {
+        return a.filter(function(item, pos) { 
+            return a.indexOf(item) == pos;
+        })
+      }
+      removeDuplicatesArray(a);
+
+      
+      
