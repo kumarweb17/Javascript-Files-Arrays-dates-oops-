@@ -9,9 +9,6 @@ in those cases you can use call or apply to call the function with your own scop
 
 //Example with .call() we tell it what "this" refers to:
 
-
-
-
 function x() {
     return this;
 }
@@ -251,3 +248,101 @@ let me = 'bar'; // SyntaxError: Identifier 'me' has already been declared
 'use strict';
 var me = 'foo';
 var me = 'bar'; // No problem, `me` is replaced.
+
+//Q)Callback Function:
+
+`A callback function, also known as a higher-order function, is a function that is passed to another function (let’s call this other function “otherFunction”) as a parameter, 
+and the callback function is called (or executed) inside the otherFunction. A callback function is essentially a pattern (an established solution to a common problem),
+ and therefore, the use of a callback function is also known as a callback pattern.`
+
+function mySandwich(param1, param2, callback) {
+    alert('Started eating my sandwich.\n\nIt has: ' + param1 + ', ' + param2);
+    callback();
+}
+
+mySandwich('ham', 'cheese', function() {
+    alert('Finished eating my sandwich.');
+});
+
+//Make Sure the Callback is a Function
+
+function mySandwich(param1, param2, callback) {
+    alert('Started eating my sandwich.\n\nIt has: ' + param1 + ', ' + param2);
+    if (callback && typeof(callback) === "function") {
+        callback();
+    }
+}
+
+mySandwich('ham', 'cheese', 'vegetables');
+
+Example2:
+// Callback function only know the action,
+// but don't know what's the data.
+function callbackFunction(unknown) {
+  console.log(unknown);
+}
+
+// This is a consuming function.
+function getInfo(thenCallback) {
+  // When we define the function we only know the data but not
+  // the action. The action will be deferred until excecuting.
+  var info = 'I know now';
+  if (typeof thenCallback === 'function') {
+    thenCallback(info);    
+  }
+}
+
+// Start.
+getInfo(callbackFunction); // I know now
+
+`Guy 1 to Guy 2: hey dude I wanna do something when a user clicks in there, call me back when that happens alright?
+
+Guy 2 calls back Guy 1 when a user clicks here.`
+
+
+//Q)setTimeout() vs setInterval()
+//setTimeout():
+
+//It is a function that execute a JavaScript statement AFTER x interval.
+
+setTimeout(function () {
+    something();
+}, 1000); // Execute something() 1 second later.
+//setInterval():
+
+//It is a function that execute a JavaScript statement EVERY x interval.
+
+var intervalID =setInterval(function () {
+    somethingElse();
+    // clearInterval(intervalID); // Will clear the timer.
+}, 2000); // Execute somethingElse() every 2 seconds.
+//The interval unit is in millisecond for both functions.
+`setInterval fires again and again in intervals, while setTimeout only fires once.`
+
+//Q)Cloning an Object
+`The object cloning is a way to create exact copy of an object`
+syntax:
+var user = Object.assign({}, currentObject);
+ex:
+let obj = {
+    a: 1,
+    b: {
+      c: 2,
+    },
+  }
+  let newObj = Object.assign({}, obj);
+  console.log(newObj); // { a: 1, b: { c: 2} }
+  
+  obj.a = 10;
+  console.log(obj); // { a: 10, b: { c: 2} }
+  console.log(newObj); // { a: 1, b: { c: 2} }
+  
+  newObj.a = 20;
+  console.log(obj); // { a: 10, b: { c: 2} }
+  console.log(newObj); // { a: 20, b: { c: 2} }
+  
+  newObj.b.c = 30;
+  console.log(obj); // { a: 10, b: { c: 30} }
+  console.log(newObj); // { a: 20, b: { c: 30} }
+  
+  // Note: newObj.b.c = 30; Read why..
