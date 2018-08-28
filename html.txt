@@ -1,0 +1,140 @@
+
+
+URL:  https://www.toptal.com/html5/interview-questions
+
+
+Q1).What's the functionality/use  of !DOCTYPE?
+A)1.HTML5:
+<!DOCTYPE html> 
+
+ 2.HTML 4.01 Strict, Transitional, Frameset:
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+
+The DOCTYPE Declaration (DTD or Document Type Declaration) does a couple of things:
+
+a.When performing HTML validation testing on a web page it tells the HTML (HyperText Markup Language) validator which version of (X)HTML standard the web page coding is supposed to comply with. When you validate your web page the HTML validator checks the coding against the applicable standard then reports which portions of the coding do not pass HTML validation (are not compliant).
+b.It tells the browser how to render the page in standards compliant mode.
+c.All browsers need the doctype. Without the DOCTYPE you are forcing the browsers to render in Quirks Mode.
+
+Q2)Web Workers
+A)1.The simplest use of workers is for performing a computationally expensive task without interrupting the user interface.
+2.Web workers enable multi-threading on the front end by spawning new background threads and running scripts in isolation. As a result, scripts executed by workers need to be contained in separate files. Because web workers execute scripts in isolated threads, scripts do not interfere with the main thread and consequently do not interrupt the UI.
+creating:
+let worker = new Worker('fetch.js');
+terminating:
+worker.terminate();
+
+a2)Web workers at long last bring multi-threading to JavaScript.
+A web worker is a script that runs in the background (i.e., in another thread) without the page needing to wait for it to complete. 
+The user can continue to interact with the page while the web worker runs in the background. Workers utilize thread-like message passing to achieve parallelism.
+
+Q3)What are some of the key new features in HTML5?
+Key new features of HTML5 include:
+
+1.Improved support for embedding graphics, audio, and video content via the new <canvas>, <audio>, and <video> tags.
+
+2.Extensions to the JavaScript API such as geolocation and drag-and-drop as well for storage and caching.
+
+3.Introduction of “web workers”.
+
+4.Several new semantic tags were also added to complement the structural logic of modern web applications. These include the <main>, <nav>, <article>, <section>, <header>, <footer>, and <aside> tags.
+
+5.New form controls, such as <calendar>, <date>, <time>, <email>, <url>, and <search>.
+
+Q3)What is HTML5 Web Storage? Explain localStorage and sessionStorage.
+
+With HTML5, web pages can store data locally within the user’s browser.
+
+Earlier, this was done with cookies. However, Web Storage is more secure and faster. The data is not included with every server request, but used ONLY when asked for.
+
+The data is stored in name/value pairs, and a web page can only access data stored by itself. Unlike cookies, the storage limit is far larger (at least 5MB) and information is never transferred to the server.
+
+->The difference between localStorage and sessionStorage involves the lifetime and scope of the storage.
+
+Data stored through localStorage is permanent: it does not expire and remains stored on the user’s computer until a web app deletes it or the user asks the browser to delete it. SessionStorage has the same lifetime as the top-level window or browser tab in which the script that stored it is running. When the window or tab is permanently closed, any data stored through sessionStorage is deleted.
+
+Both forms of storage are scoped to the document origin so that documents with different origins will never share the stored objects. But sessionStorage is also scoped on a per-window basis. If a user has two browser tabs displaying documents from the same origin, those two tabs have separate sessionStorage data: the scripts running in one tab cannot read or overwrite the data written by scripts in the other tab, even if both tabs are visiting exactly the same page and are running exactly the same scripts.
+
+Q4)What is the difference between span and div?
+A)The difference is that span gives the output with display: inline and div gives the output with display: block.
+
+span is used when we need our elements to be shown in a line, one after the other.
+
+a2div is a block element, span is inline.
+
+This means that to use them semantically, divs should be used to wrap sections of a document, while spans should be used to wrap small portions of text, images, etc.
+
+For example:
+
+<div>This a large main division, with <span>a small bit</span> of spanned text!</div>
+Note that it is illegal to place a block level element within an inline element, so:
+
+<div>Some <span>text that <div>I want</div> to mark</span> up</div> ...is illegal.)
+
+
+Q5)What is the Geolocation API in HTML5?
+
+A)HTML5’s Geolocation API lets users share their physical location with chosen web sites. JavaScript can capture a user’s latitude and longitude and can send it to the back-end web server to enable location-aware features like finding local businesses or showing their location on a map.
+
+Today, most browsers and mobile devices support the Geolocation API. The Geolocation API works with a new property of the global navigator object.
+
+A Geolocation object can be created as follows:
+
+var geolocation = navigator.geolocation;
+The geolocation object is a service object that allows widgets to retrieve information about the geographic location of the user’s device.
+
+Q6)What’s the difference between the <svg> and <canvas> elements?
+
+A)
+1.The <svg> element is a container for SVG graphics. SVG has several methods for drawing paths, boxes, circles, text, and even bitmap images.
+
+2.SVG is a language for describing 2D graphics, but <canvas> allows you to draw 2D graphics on the fly using JavaScript.
+
+3.SVG is XML-based, which means that every element is available within the SVG DOM. You can attach JavaScript event handlers for an element.
+
+4.In SVG, each drawn shape is remembered as an object. If attributes of an SVG object are changed, the browser can automatically re-render the shape.
+
+5.Canvas is rendered pixel by pixel. In canvas, once the graphic is drawn, it is forgotten by the browser. If its position should be changed, the entire scene needs to be redrawn, including any objects that might have been covered by the graphic.
+
+Q7)Center a DIV horizontally and vertically.
+A)
+HTML:
+  <div class="content">This works with any content to center data on page</div>
+CSS:
+ .content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  }
+
+Q8)Which JavaScript objects are not accessible to web worker?
+A)Following JavaScript objects are not accessible to web worker:
+
+1. The window object
+2. The document object
+3. The parent object
+
+Q9)What is a Manifest file?
+A Manifest file is a simple text file that tells the browser what to cache and what not to cache.
+
+There are three sections of a Manifest file:
+
+1) CACHE MANIFEST - Files listed here are cached after they are downloaded for the first time.
+2) NETWORK - Files listed here require a connection to the server, and are never cached.
+3) FALLBACK - Files listed here specify fallback pages if a page is inaccessible.
+
+Q10)What are the new APIs provided by HTML 5 standard?
+A)HTML 5 standard comes with a number of new APIs. Few of it are as follows:
+
+Media API
+Text Track API
+Application Cache API
+User Interaction
+Data Transfer API
+Command API
+Constraint Validation API
+History API

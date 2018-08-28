@@ -1,0 +1,179 @@
+URL: https://stackoverflow.com/questions/tagged/css?sort=votes
+
+http://a4academics.com/interview-questions/79-web/817-css-css3?showall=&limitstart=
+
+Q1)What is the difference between visibility:hidden and display:none?
+A)
+1.display:none means that the tag in question will not appear on the page at all (although you can still interact with it through the dom). There will be no space allocated for it between the other tags.
+
+2.visibility:hidden means that unlike display:none, the tag is not visible, but space is allocated for it on the page. The tag is rendered, it just isn't seen on the page.
+
+For example:
+
+test | <span style="[style-tag-value]">Appropriate style in this tag</span> | test
+Replacing [style-tag-value] with display:none results in:
+
+test |   | test
+Replacing [style-tag-value] with visibility:hidden results in:
+
+test |                        | test
+
+Q2)What is the difference between display: inline and display: inline-block?
+
+A)https://stackoverflow.com/questions/8969381/what-is-the-difference-between-display-inline-and-display-inline-block
+
+display:block means the element will occupy 100% width, and will start from a new line.
+
+display:inline-block means the element will be inline (does not start from a new line) and will stretch to occupy width of it's own content only.
+
+display: inline; is a display mode to use in a sentence. For instance, if you have a paragraph and want to highlight a single word you do:
+
+<p>
+    Pellentesque habitant morbi <em>tristique</em> senectus
+    et netus et malesuada fames ac turpis egestas.
+</p>
+The <em> element has a display: inline; by default, because this tag is always used in a sentence. The <p> element has a display: block; by default, because it's neither a sentence nor in a sentence, it's a block of sentences.
+
+An element with display: inline; cannot have a height or a width or a vertical margin. An element with display: block; can have a width, height and margin.
+If you want to add a height to the <em> element, you need to set this element to display: inline-block;. Now you can add a height to the element and every other block style (the block part of inline-block), but it is placed in a sentence (the inline part of inline-block).
+
+
+A2)
+
+1.An inline element has no line break before or after it, and it tolerates HTML elements next to it.
+
+2.A block element has some whitespace above and below it and does not tolerate any HTML elements next to it.
+
+3.An inline-block element is placed as an inline element (on the same line as adjacent content), but it behaves as a block element.
+
+Q3)How to disable a link using only CSS?
+
+A) 
+<a href="link.html" class="not-active">Link</a>
+    .not-active {
+  pointer-events: none;
+  cursor: default; 
+        }
+
+Q4)Position Relative vs Absolute?
+A)1.Relative : Relative to it’s current position, but can be moved. Or A RELATIVE positioned element is positioned relative to ITSELF.
+  2.Absolute : An ABSOLUTE positioned element is positioned relative to IT'S CLOSEST POSITIONED PARENT. if one is present, then it works like fixed.....relative to the window.
+
+Q5)margin vs padding
+A)
+Margin: is applied to the outside of you element hence effecting how far your element is away from other elements.
+Padding: is applied to the inside of your element hence effecting how far your element's content is away from the border.
+
+Also, using margin will not affect your element's dimensions whereas padding will make your elements dimensions (set height + padding) so for example if you have a 100x100px div with a 5 px padding, your div will actually be 105x105px
+
+Q6)Difference between div id and div class
+A)ids must be unique where as class can be applied to many things. In CSS, ids look like #elementID and class elements look like .someClass
+
+In general, use id whenever you want to refer to a specific element and class when you have a number of things that are all alike. For instance, common id elements are things like header, footer, sidebar. Common class elements are things like highlight or external-link.
+
+It's a good idea to read up on the cascade and understand the precedence assigned to various selectors: http://www.w3.org/TR/CSS2/cascade.html
+
+The most basic precedence you should understand, however, is that id selectors take precedence over class selectors. If you had this:
+
+<p id="intro" class="foo">Hello!</p>
+and:
+#intro { color: red }
+.foo { color: blue }
+The text would be red because the id selector takes precedence over the class selector.
+
+Q7)span vs p
+
+A)< span > is used to group inline-elements so that you can style them. Span is Inline. It is non-semantic.
+
+< p > is used for a paragraph which is a block element. Which can be styled also. Paragraph is Block. It is semantic.
+
+Q8)CSS3 new features
+A)
+1. CSS Animations and Transitions
+2.Calculating Values With calc()
+3.Advanced Selectors
+4.Border Images
+5.Media Queries
+6.
+body {
+  background-image: url("http://image-gallery.io/mountain-scene.png");
+  background-size: cover; 
+}
+7. flex
+
+.main {
+  display: flex;
+}
+8.rem value
+p {
+  font-size: 0.75rem;
+}
+8.Below are the list of texts added in CSS3 –
+
+Word-wrap
+Text-overflow
+Word- break
+
+Q9) Explain opacity in CSS3?
+
+A)Opacity is used to hide or show an element in CSS3. 
+Value – ‘0’ to hide the element and value ‘1’ means showing an element.
+
+Below is the sample for the same –
+
+<p style = “opacity:0”> Hide Text </p>
+
+Q10)What is the use of z-index in CSS?
+A)Z-Index is used to avoid the overlapping of the elements.
+ Default value of z-index is 0 and it will take positive and negative values as well.
+Q11)How do you write a conditional statement in CSS? Give an example.
+
+A)Below is the example of writing a conditional statement in CSS –
+
+<style type=”text/css”>
+body
+{
+ color: #00BFFF;
+}
+</style>
+
+<!—if [ IE 8] >
+<style type=”text/css”>
+body
+{
+ Background-color: #00FFBF;
+}
+</style>
+<! [end if] -->
+Q11)Explain what elements will match each of the following CSS selectors:
+
+A)
+div, p -> Selects all <div> elements and all <p> elements
+div p ->Selects all <p> elements that are anywhere inside a <div> element
+div > p -> Selects all <p> elements where the immediate parent is a <div> element
+div + p -> Selects all <p> elements that are placed immediately after a <div> element
+div ~ p -> Selects all <p> elements that are anywhere preceded by a <div> element
+
+Q12)Explain the CSS “box model” and the layout components that it consists of. Provide some usage examples.
+A)
+The CSS box model is a rectangular layout paradigm for HTML elements that consists of the following:
+
+Content - The content of the box, where text and images appear
+Padding - A transparent area surrounding the content (i.e., the amount of space between the border and the content)
+Border - A border surrounding the padding (if any) and content
+Margin - A transparent area surrounding the border (i.e., the amount of space between the border and any neighboring elements)
+Each of these properties can be specified independently for each side of the element (i.e., top, right, bottom, left) or fewer values can be specified to apply to multiple sides. For example:
+
+/*       top   right  bottom left  */
+padding: 25px  50px   75px   100px;
+
+/* same padding on all 4 sides: */
+padding: 25px;
+
+/* top/bottom padding 25px; right/left padding 50px */
+padding: 25px 50px;
+
+/* top padding 25px; right/left padding 50px; bottom padding 75px */
+padding: 25px 50px 75px;
+
+
