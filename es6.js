@@ -75,6 +75,42 @@ let NewOneWithParameters = (p, q) => {
 }
 NewOneWithParameters(10, 20);
 
+
+// Lexical ‘ this’
+So in the past you would have used statements like —
+
+.bind(this)
+var abc = this;
+This is known as Lexical Scoping.Earlier, every new function defined its own this value. This proved to be less than ideal for an object-oriented style of programming. An arrow function does not newly define its own this when it's being executed.The value of this is always inherited from the enclosing scope.
+
+// ES5
+function Counter(){
+   this.seconds = 0;
+   window.setInterval(function() {
+    this.seconds++;
+  }.bind(this), 1000);
+}
+//ES6
+function Counter(){
+   this.seconds =0;
+   window.setInterval( () => this.seconds++,1000 );
+}
+Most people are aware of this feature of ES6 but very few people are aware of the fact that ES6 arrow functions don’t bind their own arguments either.
+
+const funct = () => {
+       console.log(arguments); // This will throw reference error
+}
+// undefined
+
+
+
+
+
+
+
+
+
+
 //3.Default Parameters:
 
 `Default parameters are parameters which are given by default while declaring a function. 
