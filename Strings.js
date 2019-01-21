@@ -164,3 +164,17 @@ var newstring = stringone.trim() + stringtwo.trim();
  
 console.log(newstring);
 //  abcdef
+//-------------------------End----------------
+
+var str1 = new String('Hello World');
+var str2 = new String('Hello World');
+var str3 = 'Hello World';
+var str4 = str1;
+
+str1 == str2; // false - because str1 and str2 are two different objects
+str1 == str3; // true
+str1 === str4; // true
+
+typeof(str1); // object
+typeof(str3); //string
+//-------------------------End----------------
