@@ -141,3 +141,25 @@ var result1= array.filter(item => !deleteitems.includes(item));
 console.log(result1);
 
  // o/P: ["1", "25", "4", "28"]
+
+
+// print prime numbers 
+
+function primeNumbers(n) {
+
+for (i = 0; i <= n; i++)  
+{
+    prime = true;
+    for (j=2;j<i;j++)
+    {
+        if (i % j === 0)
+        {
+            prime = false;
+        }
+    }
+    if (prime){
+        console.log(i);  // 1 2 3 5 7 11 13 17 19
+    }
+}
+}
+primeNumbers(20);
